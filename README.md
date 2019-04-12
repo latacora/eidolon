@@ -5,10 +5,12 @@
 > 1. (dungeon crawl) An ancient skeletal apparition, sheathed in a cloud of
 > mist. Its form glows white-hot with debilitating energy.
 >
-> 2. (Latacora) a library of [specter][specter] navigators 
+> 2. (Latacora) a library of [specter][specter] navigators
 
-A library of all the useful [specter][specter] navigators [lvh][lvh] keeps
+A library of all the useful [specter][specter] navigators @lvh keeps
 copy-pasting to every new project.
+
+[specter]: https://github.com/nathanmarz/specter
 
 ## License
 
