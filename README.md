@@ -7,8 +7,7 @@
 >
 > 2. (Latacora) a library of [specter][specter] navigators
 
-A library of all the useful [specter][specter] navigators @lvh keeps
-copy-pasting to every new project.
+A library of all the useful [specter][specter] navigators we keep copy-pasting.
 
 [specter]: https://github.com/nathanmarz/specter
 
