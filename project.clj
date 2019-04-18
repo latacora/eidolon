@@ -6,4 +6,6 @@
   :dependencies [[org.clojure/clojure "1.10.0"]
                  [com.rpl/specter "1.1.2"]]
   :target-path "target/%s"
-  :profiles {:uberjar {:aot :all}})
+  :profiles {:uberjar {:aot :all}}
+  :deploy-repositories [["releases" :clojars]
+                        ["snapshots" :clojars]])
