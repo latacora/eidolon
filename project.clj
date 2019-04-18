@@ -1,4 +1,4 @@
-(defproject eidolon "0.1.0"
+(defproject eidolon "0.2.0-SNAPSHOT"
   :description "A collection of specter navigators"
   :url "https://github.com/latacora/eidolon"
   :license {:name "EPL-2.0"
