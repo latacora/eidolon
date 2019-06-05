@@ -21,10 +21,11 @@
   (t/is (= [[:a :b] [:c [:d]]]
            (sr/select [e/INDEXED] {:a :b :c [:d]}))))
 
+(def abcd [:a :b :c :d])
+
 (t/deftest indexed-seq-tests
-  (let [xs [:a :b :c :d]]
-    (t/is (= (map-indexed vector xs)
-             (sr/select [e/INDEXED-SEQ] xs)))))
+  (t/is (= (map-indexed vector abcd)
+           (sr/select [e/INDEXED-SEQ] abcd))))
 
 (def simple-tree
   {:a 1})
