@@ -6,6 +6,8 @@
   :dependencies [[org.clojure/clojure "1.10.0"]
                  [com.rpl/specter "1.1.2"]]
   :target-path "target/%s"
-  :profiles {:uberjar {:aot :all}}
+  :profiles {:uberjar {:aot :all}
+             :dev {:dependencies [[clj-kondo "RELEASE"]]}}
+  :aliases {"clj-kondo" ["run" "-m" "clj-kondo.main"]}
   :deploy-repositories [["releases" :clojars]
                         ["snapshots" :clojars]])
