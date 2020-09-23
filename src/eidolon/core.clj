@@ -13,7 +13,7 @@
 
   This is useful if you want to collect a path to something, see [[path-walker]]
   and [[path-finder]]."
-  [(sr/view #(map-indexed vector %)) INDEXED])
+  [sr/INDEXED-VALS (sr/collect-one sr/FIRST) sr/LAST])
 
 (def path-finder
   "Finds the first entry matching `pred` in a deeply nested structure of maps
