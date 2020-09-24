@@ -8,6 +8,11 @@
        :x :nothing
        :y :even-less}})
 
+(def transform-sample
+  {:a [1 2 3]
+   :b {:c [{:x 1}]
+       :d {:e {:x 1}}}})
+
 (t/deftest path-finder-walker-tests
   (t/is (= [[:a :b :c ['needle {:d ['second-needle]}]]]
            (sr/select (e/path-finder vector?) finder-sample-haystack))
@@ -15,7 +20,13 @@
   (t/is (= [[:a :b :c 1 :d ['second-needle]]
             [:a :b :c ['needle {:d ['second-needle]}]]]
            (sr/select (e/path-walker vector? e/INDEXED-SEQ) finder-sample-haystack))
-        "path-walker finds the deepest needle first, then the shallow needle"))
+        "path-walker finds the deepest needle first, then the shallow needle")
+  (t/is (= {:a [1 2 3]
+            :b {:c [::replaced]
+                :d {:e ::replaced}}}
+           (sr/transform (e/path-walker :x sr/ALL)
+                         (constantly ::replaced)
+                         transform-sample))))
 
 (t/deftest indexed-tests
   (t/is (= [[:a :b] [:c [:d]]]
@@ -25,7 +36,16 @@
 
 (t/deftest indexed-seq-tests
   (t/is (= (map-indexed vector abcd)
-           (sr/select [e/INDEXED-SEQ] abcd))))
+           (sr/select [e/INDEXED-SEQ] abcd)))
+  ;; find the indexes of maps with :c and their values at :c
+  (t/is (= [[2 3] [4 5]]
+           (sr/select [e/INDEXED-SEQ :c some?]
+                      [{:a 1} {:b 2} {:c 3} {:d 4} {:c 5}])))
+  ;; assoc the indexes into a vec of maps
+  (t/is (= [{:ix 0} {:ix 1} {:ix 2}]
+           (sr/transform [e/INDEXED-SEQ :ix]
+                         (fn [i _] i)
+                         [{} {} {}]))))
 
 (def simple-tree
   {:a 1})

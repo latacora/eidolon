@@ -1,0 +1,3 @@
+{:linters
+ {:unresolved-symbol
+  {:exclude [(com.rpl.specter/recursive-path)]}}}
