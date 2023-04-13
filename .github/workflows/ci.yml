@@ -14,7 +14,7 @@ jobs:
           java-version: 11
 
       - name: Setup Clojure
-        uses: DeLaGuardo/setup-clojure@2.0
+        uses: DeLaGuardo/setup-clojure@10.3
         with:
           tools-deps: "latest"
 
@@ -33,7 +33,7 @@ jobs:
           java-version: 11
 
       - name: Setup Clojure
-        uses: DeLaGuardo/setup-clojure@2.0
+        uses: DeLaGuardo/setup-clojure@10.3
         with:
           tools-deps: "latest"
 
