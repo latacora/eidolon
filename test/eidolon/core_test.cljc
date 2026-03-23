@@ -1,5 +1,6 @@
 (ns eidolon.core-test
-  (:require [clojure.test :as t]
+  (:require #?(:clj [clojure.test :as t]
+               :cljs [cljs.test :as t])
             [eidolon.core :as e]
             [com.rpl.specter :as sr]))
 

@@ -1,2 +1,15 @@
 {:deps {org.clojure/clojure {:mvn/version "1.10.0"}
-        com.rpl/specter {:mvn/version "1.1.2"}}}
+        com.rpl/specter {:mvn/version "1.1.2"}}
+ :aliases
+ {:test
+  {:extra-paths ["test"]
+   :extra-deps {io.github.cognitect-labs/test-runner
+                {:git/tag "v0.5.1"
+                 :git/sha "dfb30dd"}}
+   :main-opts ["-m" "cognitect.test-runner"]
+   :exec-fn cognitect.test-runner.api/test}
+  :cljs-test
+  {:extra-deps {org.clojure/clojurescript {:mvn/version "1.11.132"}
+                olical/cljs-test-runner {:mvn/version "3.8.1"}}
+   :extra-paths ["test"]
+   :main-opts ["-m" "cljs-test-runner.main"]}}}
