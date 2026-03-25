@@ -7,14 +7,15 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
-      - uses: actions/setup-java@v1
+      - uses: actions/setup-java@v4
         with:
+          distribution: temurin
           java-version: 11
 
       - name: Setup Clojure
-        uses: DeLaGuardo/setup-clojure@10.3
+        uses: DeLaGuardo/setup-clojure@13.2
         with:
           tools-deps: "latest"
 
@@ -22,24 +23,22 @@ jobs:
         run: clojure -Sdescribe
 
       - name: Run tests
-        run: lein test
+        run: clojure -X:test
   lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
-      - uses: actions/setup-java@v1
+      - uses: actions/setup-java@v4
         with:
+          distribution: temurin
           java-version: 11
 
       - name: Setup Clojure
-        uses: DeLaGuardo/setup-clojure@10.3
+        uses: DeLaGuardo/setup-clojure@13.2
         with:
           tools-deps: "latest"
-
-      - name: Show Clojure env details
-        run: clojure -Sdescribe
+          clj-kondo: "latest"
 
       - name: Lint with clj-kondo
-        run: lein clj-kondo --lint src/ test/
-
+        run: clj-kondo --lint src/ test/
